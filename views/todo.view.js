@@ -24,4 +24,16 @@ export class TodoView {
       handler(text);
     });
   }
+
+  bindRemoveTodo(handler) {
+    this.rootElement.addEventListener("click", (event) => {
+      if (!event.target.dataset.deleteTodo) {
+        return;
+      }
+
+      let id = event.target.dataset.deleteTodo;
+
+      handler(id);
+    });
+  }
 }

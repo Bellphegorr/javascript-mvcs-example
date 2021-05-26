@@ -11,7 +11,7 @@ export class TodoTemplate {
         ${todoList
           .map(
             (todoItem) =>
-              /*html*/ `<li id="${todoItem.id}">${todoItem.text} <button data-delete-todo>Deletar</button></li>`
+              /*html*/ `<li>${todoItem.text} <button data-delete-todo="${todoItem.id}">Deletar</button></li>`
           )
           .join("")}
       </ul>

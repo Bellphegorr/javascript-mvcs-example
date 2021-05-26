@@ -11,21 +11,7 @@ export class TodoService {
     this.onTodoListChange = callback;
   }
 
-  async _commitPost(todoList, todoItem) {
-    // let response = await fetch("localhost:5000/addTodo", {
-    //   method: "Post",
-    //   body: newTodo,
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-
-    // if (response.status) {
-    //   this.onTodoListChange(todoList);
-    // } else {
-    //   //
-    // }
-
+  _commitPost(todoList, todoItem) {
     this.onTodoListChange(todoList);
   }
 
@@ -41,17 +27,23 @@ export class TodoService {
     this.onTodoListChange(todoList);
   }
 
-  async addTodo(text) {
+  addTodo(text) {
     let newTodo = new this.TodoItemModel(text, false);
 
     this.todoList.list.push(newTodo);
 
-    await this._commitPost(this.todoList.list, newTodo);
+    this._commitPost(this.todoList.list, newTodo);
   }
 
   getTodo() {}
 
-  removeTodo() {}
+  removeTodo(id) {
+    this.todoList.list = this.todoList.list.filter(
+      (todoItem) => todoItem.id != id
+    );
+
+    this._commitDelete(this.todoList.list);
+  }
 
   toggleTodo() {}
 }

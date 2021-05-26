@@ -7,6 +7,7 @@ export class TodoController {
     // Bind
     this.todoService.bindTodoChange(this.onTodoListChange);
     this.todoView.bindAddTodo(this.handleAddTodo);
+    this.todoView.bindRemoveTodo(this.handleRemoveTodo);
 
     // Initial display
     this.onTodoListChange(this.todoService.todoList.list);
@@ -18,5 +19,9 @@ export class TodoController {
 
   handleAddTodo = (text /*view parameter*/) => {
     this.todoService.addTodo(text); /*service method*/
+  };
+
+  handleRemoveTodo = (id) => {
+    this.todoService.removeTodo(id);
   };
 }
