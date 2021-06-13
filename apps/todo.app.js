@@ -16,6 +16,9 @@ import { TodoService } from "../services/todo-service.js";
 // Templates
 import { TodoTemplate } from "../template/todo.template.js";
 
+/**
+ * @type {TodoController}
+ */
 const app = new TodoController(
   new TodoService(TodoItemModel, TodoListModel),
   new TodoView(TodoTemplate)

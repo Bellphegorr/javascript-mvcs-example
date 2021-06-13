@@ -1,5 +1,15 @@
-// Bind class (union between service & view)
+import { TodoService } from "../services/todo-service.js";
+import { TodoView } from "../views/todo.view.js";
+
+/**
+ * @class Bind at view and service
+ */
 export class TodoController {
+  /**
+   *
+   * @param {TodoService} todoService instace of TodoService
+   * @param {TodoView} todoView instace of TodoView
+   */
   constructor(todoService, todoView) {
     this.todoService = todoService;
     this.todoView = todoView;
@@ -11,14 +21,18 @@ export class TodoController {
 
     // Initial display
     this.onTodoListChange(this.todoService.todoList.list);
+
+    this.example = new TodoService();
+
+    this.example.bindTodoChange;
   }
 
-  onTodoListChange = (todoList /*service parameter*/) => {
-    this.todoView.render(todoList); /*view method*/
+  onTodoListChange = (todoList) => {
+    this.todoView.render(todoList);
   };
 
-  handleAddTodo = (text /*view parameter*/) => {
-    this.todoService.addTodo(text); /*service method*/
+  handleAddTodo = (text) => {
+    this.todoService.addTodo(text);
   };
 
   handleRemoveTodo = (id) => {
