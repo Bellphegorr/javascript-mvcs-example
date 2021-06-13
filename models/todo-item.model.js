@@ -21,5 +21,5 @@ export class TodoItemModel {
 // Model with typedef
 
 /**
- * @typedef {!{id: number, text: string, complete: boolean}} todoItemType
+ * @typedef {!{id: number, text: string, complete: boolean}} ITodoItemModel
  */

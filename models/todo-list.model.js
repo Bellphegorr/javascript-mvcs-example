@@ -1,4 +1,4 @@
-import { TodoItemModel } from "./todo-item.model";
+import { TodoItemModel } from "./todo-item.model.js";
 
 /**
  * @class Define a list of todo items

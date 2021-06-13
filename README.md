@@ -4,4 +4,4 @@ Example of JavaScript with MVCS pattern
 
 # Todo
 
-Verificar como criar interfaces ou modelos que sejam condizentes com a questão de criação e em virtude do JSDoc
+Make a model with jsdoc or es6 class

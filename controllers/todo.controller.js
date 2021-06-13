@@ -6,9 +6,8 @@ import { TodoView } from "../views/todo.view.js";
  */
 export class TodoController {
   /**
-   *
-   * @param {TodoService} todoService instace of TodoService
-   * @param {TodoView} todoView instace of TodoView
+   * @param {TodoService} todoService instance of TodoService
+   * @param {TodoView} todoView instance of TodoView
    */
   constructor(todoService, todoView) {
     this.todoService = todoService;
@@ -18,6 +17,7 @@ export class TodoController {
     this.todoService.bindTodoChange(this.onTodoListChange);
     this.todoView.bindAddTodo(this.handleAddTodo);
     this.todoView.bindRemoveTodo(this.handleRemoveTodo);
+    this.todoView.bindToggleTodo(this.handleToggleTodo);
 
     // Initial display
     this.onTodoListChange(this.todoService.todoList.list);
@@ -37,5 +37,9 @@ export class TodoController {
 
   handleRemoveTodo = (id) => {
     this.todoService.removeTodo(id);
+  };
+
+  handleToggleTodo = (id, text) => {
+    this.todoService.toggleTodo(id, text);
   };
 }

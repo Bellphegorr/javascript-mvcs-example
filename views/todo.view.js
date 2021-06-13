@@ -36,4 +36,19 @@ export class TodoView {
       handler(id);
     });
   }
+
+  bindToggleTodo(handler) {
+    this.rootElement.addEventListener("click", (event) => {
+      if (!event.target.dataset.toggleTodo) {
+        return;
+      }
+
+      let id = event.target.dataset.toggleTodo;
+
+      console.log(event.target);
+      console.log(event.currentTarget);
+
+      handler(id, "test");
+    });
+  }
 }

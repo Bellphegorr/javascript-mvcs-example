@@ -1,20 +1,15 @@
-import { TodoItemModel, todoItemType } from "../models/todo-item.model.js";
+import { TodoItemModel } from "../models/todo-item.model.js";
 import { TodoListModel } from "../models/todo-list.model.js";
 
 /**
  * @class Data modification (use the models to change and control the data values application)
  */
 export class TodoService {
-  /**
-   *
-   * @param {TodoItemModel} TodoItemModel Model indicated a todo item
-   * @param {TodoListModel} TodoListModel Model indicated a list of todo items
-   */
-  constructor(TodoItemModel, TodoListModel) {
+  constructor() {
+    /** @param {TodoItemModel} TodoItemModel Model indicated a todo item */
     this.TodoItemModel = TodoItemModel;
+    /** @param {TodoListModel} TodoListModel Model indicated a list of todo items */
     this.TodoListModel = TodoListModel;
-
-    debugger;
 
     this.todoList = new this.TodoListModel();
   }
@@ -24,7 +19,7 @@ export class TodoService {
    */
 
   /**
-   * Bind to recieve a function to handle after change a todo item
+   * Bind to receive a function to handle after change a todo item
    *
    * @param {viewCallback} callback Function to handle after change a todo item
    */
@@ -50,16 +45,21 @@ export class TodoService {
 
   addTodo(text) {
     /**
-     * @type {todoItemType}
+     * @type {TodoItemModel}
      */
     let newTodo = new this.TodoItemModel(text, false);
 
     this.todoList.list.push(newTodo);
 
-    this._commitPost(this.todoList.list, newTodo);
+    this._commitPost(this.todoList.list);
   }
 
-  getTodo() {}
+  getTodo(id) {
+    /**
+     * @type {ITodoItemModel}
+     */
+    let todo = this.todoList.list.filter((todo) => (todo.id = id));
+  }
 
   removeTodo(id) {
     this.todoList.list = this.todoList.list.filter(
@@ -69,5 +69,16 @@ export class TodoService {
     this._commitDelete(this.todoList.list);
   }
 
-  toggleTodo() {}
+  toggleTodo(id, text) {
+    /**
+     * @type {TodoItemModel}
+     */
+    let todoIndex = this.todoList.list.findIndex((todo) => todo.id == id);
+
+    this.todoList.list[todoIndex].text = text;
+
+    debugger;
+
+    this._commitPut(this.todoList.list);
+  }
 }
