@@ -44,11 +44,26 @@ export class TodoView {
       }
 
       let id = event.target.dataset.toggleTodo;
+      let parentNode = event.target.parentNode;
+      let inputNode = document.createElement("input");
+      let cloneNode = event.target.cloneNode();
 
-      console.log(event.target);
-      console.log(event.currentTarget);
+      inputNode.dataset.toggleInput = id;
+      inputNode.addEventListener("keypress", (event) => {
+        let keyPressed = event.code;
+        let newTextValue = event.currentTarget.value;
 
-      handler(id, "test");
+        if (keyPressed != "Enter") {
+          return;
+        }
+
+        if (newTextValue) handler(id, newTextValue);
+      });
+
+      event.target.remove();
+      parentNode.prepend(inputNode);
+
+      debugger;
     });
   }
 }
