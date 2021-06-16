@@ -1,17 +1,15 @@
 import { TodoItemModel } from "../models/todo-item.model.js";
-import { TodoListModel } from "../models/todo-list.model.js";
+// import { TodoListModel } from "../models/todo-list.model.js";
 
 /**
  * @class Data modification (use the models to change and control the data values application)
  */
 export class TodoService {
   constructor() {
-    /** @param {TodoItemModel} TodoItemModel Model indicated a todo item */
-    this.TodoItemModel = TodoItemModel;
-    /** @param {TodoListModel} TodoListModel Model indicated a list of todo items */
-    this.TodoListModel = TodoListModel;
+    /** @param {Array<TodoItemModel>}  */
+    this.todoList = Array(new TodoItemModel('example', false));
 
-    this.todoList = new this.TodoListModel();
+    debugger;
   }
 
   /**
@@ -30,7 +28,9 @@ export class TodoService {
   }
 
   /**
-   * After change, delete ou toggle a todo, commit and re-render todo
+   * @method _commit After change, delete ou toggle a todo, commit and re-render todo
+   * 
+   * @private
    * 
    * @param {Array<TodoItemModel>} todoList 
    */
@@ -47,11 +47,11 @@ export class TodoService {
     /**
      * @type {TodoItemModel}
      */
-    let newTodo = new this.TodoItemModel(text, false);
+    let newTodo = new TodoItemModel(text, false);
 
-    this.todoList.list.push(newTodo);
+    this.todoList.push(newTodo);
 
-    this._commit(this.todoList.list);
+    this._commit(this.todoList);
   }
 
   /**
@@ -63,7 +63,7 @@ export class TodoService {
     /**
      * @type {ITodoItemModel}
      */
-    let todo = this.todoList.list.filter((todo) => (todo.id = id));
+    let todo = this.todoList.filter((todo) => (todo.id = id));
   }
 
   /**
@@ -72,11 +72,11 @@ export class TodoService {
    * @param {number} id 
    */
   removeTodo(id) {
-    this.todoList.list = this.todoList.list.filter(
+    this.todoList = this.todoList.filter(
       (todoItem) => todoItem.id != id
     );
 
-    this._commit(this.todoList.list);
+    this._commit(this.todoList);
   }
 
   /**
@@ -89,12 +89,10 @@ export class TodoService {
     /**
      * @type {TodoItemModel}
      */
-    let todoIndex = this.todoList.list.findIndex((todo) => todo.id == id);
+    let todoIndex = this.todoList.findIndex((todo) => todo.id == id);
 
-    this.todoList.list[todoIndex].text = text;
+    this.todoList[todoIndex].text = text;
 
-    debugger;
-
-    this._commit(this.todoList.list);
+    this._commit(this.todoList);
   }
 }

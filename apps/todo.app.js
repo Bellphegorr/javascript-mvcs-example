@@ -1,9 +1,5 @@
 // Dependency Injection
 
-// Models
-import { TodoItemModel } from "../models/todo-item.model.js";
-import { TodoListModel } from "../models/todo-list.model.js";
-
 // Views
 import { TodoView } from "../views/todo.view.js";
 

@@ -6,7 +6,7 @@
 export class TodoItemModel {
   /**
    * @param {string} text Todo's text
-   * @param {string} complete Todo's complete status
+   * @param {boolean} complete Todo's complete status
    */
   constructor(text, complete) {
     /** @type {!number} */

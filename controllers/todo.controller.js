@@ -23,11 +23,13 @@ export class TodoController {
     this.todoView.bindToggleTodo(this.handleToggleTodo);
 
     // Initial display
-    this.onTodoListChange(this.todoService.todoList.list);
+    this.onTodoListChange(this.todoService.todoList);
   }
 
   /**
-   * Display todoList 
+   * @method onTodoListChange Display todoList 
+   * 
+   * @private 
    * 
    * @param {Array<TodoItemModel>} todoList 
    */
@@ -36,7 +38,9 @@ export class TodoController {
   };
 
   /**
-   * Add a new todo
+   * @method handleAddTodo Add a new todo
+   * 
+   * @private
    * 
    * @param {string} text 
    */
@@ -45,7 +49,9 @@ export class TodoController {
   };
 
   /**
-   * Remove a todo by id
+   * @method handleRemoveTodo Remove a todo by id
+   * 
+   * @private
    * 
    * @param {number} id 
    */
@@ -54,7 +60,9 @@ export class TodoController {
   };
 
   /**
-   * Edit todo by id
+   * @method handleToggleTodo Edit todo by id
+   * 
+   * @private
    * 
    * @param {number} id 
    * @param {string} text 

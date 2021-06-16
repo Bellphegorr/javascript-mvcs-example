@@ -1,17 +1,41 @@
-// User interface manager
+import { TodoItemModel } from '../models/todo-item.model.js';
+import {TodoTemplate} from '../template/todo.template.js';
+
+/**
+ * @class View modification (class to modifier and view control)
+ */
 export class TodoView {
+  /** @param {TodoTemplate} todoTemplate */
   constructor(TodoTemplate) {
+    /** @type {TodoTemplate} */
     this.TodoTemplate = TodoTemplate;
 
+    /** @type {HTMLElement} root element of page */
     this.rootElement = document.querySelector("#root");
   }
 
+  /**
+   * Render a list of todo on the view
+   * 
+   * @param {Array<TodoItemModel>} todoList 
+   */
   render(todoList) {
     let template = this.TodoTemplate.renderView(todoList);
 
     this.rootElement.innerHTML = template;
   }
 
+  /**
+   * @callback bindAddTodoHandler
+   * 
+   * @param {string} text 
+   */
+
+  /**
+   * @method Bind to add a todo after click in add-todo button
+   * 
+   * @param {bindAddTodoHandler} handler 
+   */
   bindAddTodo(handler) {
     this.rootElement.addEventListener("click", (event) => {
       if (event.target.id != "add-todo") {
@@ -24,6 +48,7 @@ export class TodoView {
       handler(text);
     });
   }
+
 
   bindRemoveTodo(handler) {
     this.rootElement.addEventListener("click", (event) => {
@@ -62,8 +87,6 @@ export class TodoView {
 
       event.target.remove();
       parentNode.prepend(inputNode);
-
-      debugger;
     });
   }
 }
