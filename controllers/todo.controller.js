@@ -1,3 +1,4 @@
+import { TodoItemModel } from "../models/todo-item.model.js";
 import { TodoService } from "../services/todo-service.js";
 import { TodoView } from "../views/todo.view.js";
 
@@ -10,7 +11,9 @@ export class TodoController {
    * @param {TodoView} todoView instance of TodoView
    */
   constructor(todoService, todoView) {
+    /** @type {TodoService} */
     this.todoService = todoService;
+    /** @type {TodoView} */
     this.todoView = todoView;
 
     // Bind
@@ -21,24 +24,41 @@ export class TodoController {
 
     // Initial display
     this.onTodoListChange(this.todoService.todoList.list);
-
-    this.example = new TodoService();
-
-    this.example.bindTodoChange;
   }
 
+  /**
+   * Display todoList 
+   * 
+   * @param {Array<TodoItemModel>} todoList 
+   */
   onTodoListChange = (todoList) => {
     this.todoView.render(todoList);
   };
 
+  /**
+   * Add a new todo
+   * 
+   * @param {string} text 
+   */
   handleAddTodo = (text) => {
     this.todoService.addTodo(text);
   };
 
+  /**
+   * Remove a todo by id
+   * 
+   * @param {number} id 
+   */
   handleRemoveTodo = (id) => {
     this.todoService.removeTodo(id);
   };
 
+  /**
+   * Edit todo by id
+   * 
+   * @param {number} id 
+   * @param {string} text 
+   */
   handleToggleTodo = (id, text) => {
     this.todoService.toggleTodo(id, text);
   };

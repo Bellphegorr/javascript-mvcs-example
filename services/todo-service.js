@@ -15,7 +15,9 @@ export class TodoService {
   }
 
   /**
-   *  @callback viewCallback
+   * @callback viewCallback
+   * 
+   * @param {Array<TodoItemModel>} todoList
    */
 
   /**
@@ -27,22 +29,20 @@ export class TodoService {
     this.onTodoListChange = callback;
   }
 
-  _commitPost(todoList) {
+  /**
+   * After change, delete ou toggle a todo, commit and re-render todo
+   * 
+   * @param {Array<TodoItemModel>} todoList 
+   */
+  _commit(todoList) {
     this.onTodoListChange(todoList);
   }
 
-  _commitDelete(todoList) {
-    this.onTodoListChange(todoList);
-  }
-
-  _commitGet(todoList) {
-    this.onTodoListChange(todoList);
-  }
-
-  _commitPut(todoList) {
-    this.onTodoListChange(todoList);
-  }
-
+  /**
+   * Add todo
+   * 
+   * @param {string} text 
+   */
   addTodo(text) {
     /**
      * @type {TodoItemModel}
@@ -51,9 +51,14 @@ export class TodoService {
 
     this.todoList.list.push(newTodo);
 
-    this._commitPost(this.todoList.list);
+    this._commit(this.todoList.list);
   }
 
+  /**
+   * Get a todo by id
+   * 
+   * @param {number} id 
+   */
   getTodo(id) {
     /**
      * @type {ITodoItemModel}
@@ -61,14 +66,25 @@ export class TodoService {
     let todo = this.todoList.list.filter((todo) => (todo.id = id));
   }
 
+  /**
+   * Remove a todo by id
+   * 
+   * @param {number} id 
+   */
   removeTodo(id) {
     this.todoList.list = this.todoList.list.filter(
       (todoItem) => todoItem.id != id
     );
 
-    this._commitDelete(this.todoList.list);
+    this._commit(this.todoList.list);
   }
 
+  /**
+   * Toggle a todo by id
+   * 
+   * @param {number} id 
+   * @param {string} text 
+   */
   toggleTodo(id, text) {
     /**
      * @type {TodoItemModel}
@@ -79,6 +95,6 @@ export class TodoService {
 
     debugger;
 
-    this._commitPut(this.todoList.list);
+    this._commit(this.todoList.list);
   }
 }
