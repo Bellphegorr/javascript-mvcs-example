@@ -7,19 +7,17 @@ import { TodoItemModel } from "../models/todo-item.model.js";
 export class TodoService {
   constructor() {
     /** @param {Array<TodoItemModel>}  */
-    this.todoList = Array(new TodoItemModel('example', false));
-
-    debugger;
+    this.todoList = this.getAllTodo();
   }
 
   /**
    * @callback viewCallback
-   * 
+   *
    * @param {Array<TodoItemModel>} todoList
    */
 
   /**
-   * Bind to receive a function to handle after change a todo item
+   * @method bindTodoChange Bind to receive a function to handle after change a todo item
    *
    * @param {viewCallback} callback Function to handle after change a todo item
    */
@@ -29,19 +27,21 @@ export class TodoService {
 
   /**
    * @method _commit After change, delete ou toggle a todo, commit and re-render todo
-   * 
+   *
    * @private
-   * 
-   * @param {Array<TodoItemModel>} todoList 
+   *
+   * @param {Array<TodoItemModel>} todoList A list of todo to be save
    */
   _commit(todoList) {
+    localStorage.todo = JSON.stringify(todoList);
+
     this.onTodoListChange(todoList);
   }
 
   /**
-   * Add todo
-   * 
-   * @param {string} text 
+   * @method addTodo Add todo
+   *
+   * @param {string} text
    */
   addTodo(text) {
     /**
@@ -55,35 +55,30 @@ export class TodoService {
   }
 
   /**
-   * Get a todo by id
-   * 
-   * @param {number} id 
+   * @method getAllTodo Get all todo from local storage
+   *
+   * @return All the todo saved on local storage
    */
-  getTodo(id) {
-    /**
-     * @type {ITodoItemModel}
-     */
-    let todo = this.todoList.filter((todo) => (todo.id = id));
+  getAllTodo() {
+    return JSON.parse(localStorage.todo);
   }
 
   /**
-   * Remove a todo by id
-   * 
-   * @param {number} id 
+   * @method removeTodo Remove a todo by id
+   *
+   * @param {number} id
    */
   removeTodo(id) {
-    this.todoList = this.todoList.filter(
-      (todoItem) => todoItem.id != id
-    );
+    this.todoList = this.todoList.filter((todoItem) => todoItem.id != id);
 
     this._commit(this.todoList);
   }
 
   /**
-   * Toggle a todo by id
-   * 
-   * @param {number} id 
-   * @param {string} text 
+   * @method toggleTodo Toggle a todo by id
+   *
+   * @param {number} id
+   * @param {string} text
    */
   toggleTodo(id, text) {
     /**

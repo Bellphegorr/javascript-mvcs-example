@@ -1,4 +1,4 @@
-import { TodoItemModel } from "../models/todo-item.model";
+import { TodoItemModel } from "../models/todo-item.model.js";
 
 /**
  * @class Template of todo view
