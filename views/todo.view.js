@@ -1,5 +1,5 @@
-import { TodoItemModel } from '../models/todo-item.model.js';
-import {TodoTemplate} from '../template/todo.template.js';
+import { TodoItemModel } from "../models/todo-item.model.js";
+import { TodoTemplate } from "../template/todo.template.js";
 
 /**
  * @class View modification (class to modifier and view control)
@@ -16,8 +16,8 @@ export class TodoView {
 
   /**
    * Render a list of todo on the view
-   * 
-   * @param {Array<TodoItemModel>} todoList 
+   *
+   * @param {Array<TodoItemModel>} todoList
    */
   render(todoList) {
     let template = this.TodoTemplate.renderView(todoList);
@@ -27,14 +27,14 @@ export class TodoView {
 
   /**
    * @callback bindAddTodoHandler
-   * 
-   * @param {string} text 
+   *
+   * @param {string} text
    */
 
   /**
    * @method Bind to add a todo after click in add-todo button
-   * 
-   * @param {bindAddTodoHandler} handler 
+   *
+   * @param {bindAddTodoHandler} handler A callback function to set a new todo on service corresponding
    */
   bindAddTodo(handler) {
     this.rootElement.addEventListener("click", (event) => {
@@ -49,7 +49,17 @@ export class TodoView {
     });
   }
 
+  /**
+   * @callback bindRemoveTodoHandler
+   *
+   * @param {number} id
+   */
 
+  /**
+   * @method bindRemoveTodo Remove a todo from saved todo after click on delete button
+   *
+   * @param {bindRemoveTodoHandler} handler A function to remove a todo from service
+   */
   bindRemoveTodo(handler) {
     this.rootElement.addEventListener("click", (event) => {
       if (!event.target.dataset.deleteTodo) {
@@ -62,6 +72,18 @@ export class TodoView {
     });
   }
 
+  /**
+   * @callback bindToggleTodoHandler
+   *
+   * @param {number} id
+   * @param {string} newTextValue
+   */
+
+  /**
+   * @method bindToggleTodo Toggle a saved todo to new title for it
+   *
+   * @param {bindToggleTodoHandler} handler A function to toggle a todo from service
+   */
   bindToggleTodo(handler) {
     this.rootElement.addEventListener("click", (event) => {
       if (!event.target.dataset.toggleTodo) {
