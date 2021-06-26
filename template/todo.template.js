@@ -14,16 +14,23 @@ export class TodoTemplate {
     return /*html*/ `
       <h1>Todo</h1>
 
-      <input type="text">
-      <button id="add-todo">Adicionar</button>
+      <div class="row">
+        <div class="col s4">
+          <input type="text">
+        </div>
+        <div class="col s4">
+          <button id="add-todo" class="waves-effect waves-light btn">Adicionar</button>
+        </div>
+      </div>
 
-      <ul>
+
+      <ul class="collection">
         ${todoList
           .map(
             (todoItem) => /*html*/ `
-              <li> 
+              <li class="collection-item"> 
                 <span data-toggle-todo="${todoItem.id}">${todoItem.text}</span> 
-                <button data-delete-todo="${todoItem.id}">Deletar</button>
+                <button class="waves-effect waves-light btn" data-delete-todo="${todoItem.id}">Deletar</button>
               </li>`
           )
           .join("")}
