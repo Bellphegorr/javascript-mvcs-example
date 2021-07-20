@@ -1,7 +1,9 @@
-// Model with class
+// * Model with class
 
 /**
- * @class Define a todo item model
+ * Define a todo item model
+ * 
+ * @class 
  */
 export class TodoItemModel {
   /**
@@ -18,7 +20,7 @@ export class TodoItemModel {
   }
 }
 
-// Model with typedef
+// * Model with typedef
 
 /**
  * @typedef {!{id: number, text: string, complete: boolean}} ITodoItemModel

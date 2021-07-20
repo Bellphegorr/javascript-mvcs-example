@@ -2,7 +2,9 @@ import { TodoItemModel } from "../models/todo-item.model.js";
 // import { TodoListModel } from "../models/todo-list.model.js";
 
 /**
- * @class Data modification (use the models to change and control the data values application)
+ * Data modification (use the models to change and control the data values application)
+ * 
+ * @class 
  */
 export class TodoService {
   constructor() {
@@ -17,7 +19,9 @@ export class TodoService {
    */
 
   /**
-   * @method bindTodoChange Bind to receive a function to handle after change a todo item
+   * Bind to receive a function to handle after change a todo item
+   * 
+   * @method bindTodoChange
    *
    * @param {viewCallback} callback Function to handle after change a todo item
    */
@@ -26,7 +30,9 @@ export class TodoService {
   }
 
   /**
-   * @method _commit After change, delete ou toggle a todo, commit and re-render todo
+   * After change, delete ou toggle a todo, commit and re-render todo
+   * 
+   * @method _commit 
    *
    * @private
    *
@@ -39,9 +45,11 @@ export class TodoService {
   }
 
   /**
-   * @method addTodo Add todo
+   * Add todo
+   * 
+   * @method addTodo 
    *
-   * @param {string} text
+   * @param {string} text Text to add new todo
    */
   addTodo(text) {
     /**
@@ -55,7 +63,9 @@ export class TodoService {
   }
 
   /**
-   * @method getAllTodo Get all todo from local storage
+   * Get all todo from local storage
+   * 
+   * @method getAllTodo 
    *
    * @return All the todo saved on local storage
    */
@@ -64,9 +74,11 @@ export class TodoService {
   }
 
   /**
-   * @method removeTodo Remove a todo by id
+   * Remove a todo by id
+   * 
+   * @method removeTodo 
    *
-   * @param {number} id
+   * @param {number} id Todo id that will be removed
    */
   removeTodo(id) {
     this.todoList = this.todoList.filter((todoItem) => todoItem.id != id);
@@ -75,10 +87,12 @@ export class TodoService {
   }
 
   /**
-   * @method toggleTodo Toggle a todo by id
+   * Toggle a todo by id
+   * 
+   * @method toggleTodo 
    *
-   * @param {number} id
-   * @param {string} text
+   * @param {number} id Todo id that will be toggled
+   * @param {string} text Text to toggle todo
    */
   toggleTodo(id, text) {
     /**

@@ -3,7 +3,9 @@ import { TodoService } from "../services/todo-service.js";
 import { TodoView } from "../views/todo.view.js";
 
 /**
- * @class Bind at view and service
+ * Bind at view and service
+ *
+ * @class
  */
 export class TodoController {
   /**
@@ -27,45 +29,53 @@ export class TodoController {
   }
 
   /**
-   * @method onTodoListChange Display todoList 
-   * 
-   * @private 
-   * 
-   * @param {Array<TodoItemModel>} todoList 
+   * Display todoList
+   *
+   * @method onTodoListChange
+   *
+   * @private
+   *
+   * @param {Array<TodoItemModel>} todoList The todo list will be rendered
    */
   onTodoListChange = (todoList) => {
     this.todoView.render(todoList);
   };
 
   /**
-   * @method handleAddTodo Add a new todo
+   * Add a new todo
    * 
+   * @method handleAddTodo
+   *
    * @private
-   * 
-   * @param {string} text 
+   *
+   * @param {string} text String text to create a new todo
    */
   handleAddTodo = (text) => {
     this.todoService.addTodo(text);
   };
 
   /**
-   * @method handleRemoveTodo Remove a todo by id
+   * Remove a todo by id
    * 
+   * @method handleRemoveTodo
+   *
    * @private
-   * 
-   * @param {number} id 
+   *
+   * @param {number} id ID of todo that will be removed
    */
   handleRemoveTodo = (id) => {
     this.todoService.removeTodo(id);
   };
 
   /**
-   * @method handleToggleTodo Edit todo by id
+   * Edit todo by id
    * 
+   * @method handleToggleTodo
+   *
    * @private
-   * 
-   * @param {number} id 
-   * @param {string} text 
+   *
+   * @param {number} id ID of todo that will be toggled
+   * @param {string} text Text to toggle todo
    */
   handleToggleTodo = (id, text) => {
     this.todoService.toggleTodo(id, text);

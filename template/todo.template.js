@@ -1,12 +1,21 @@
 import { TodoItemModel } from "../models/todo-item.model.js";
 
 /**
- * @class Template of todo view
+ * Template of todo view
+ * 
+ * @class 
+ * 
+ * @static
  */
 export class TodoTemplate {
   /**
-   *
-   * @param {Array<TodoItemModel>} todoList
+   * Render a todo template
+   * 
+   * @method renderView
+   * 
+   * @static
+   * 
+   * @param {Array<TodoItemModel>} todoList Todo list that will be plotted 
    *
    * @returns A HTML string with template of todo view (complete)
    */

@@ -2,7 +2,9 @@ import { TodoItemModel } from "../models/todo-item.model.js";
 import { TodoTemplate } from "../template/todo.template.js";
 
 /**
- * @class View modification (class to modifier and view control)
+ * View modification (class to modifier and view control)
+ * 
+ * @class 
  */
 export class TodoView {
   /** @param {TodoTemplate} todoTemplate */
@@ -16,8 +18,10 @@ export class TodoView {
 
   /**
    * Render a list of todo on the view
+   * 
+   * @method render
    *
-   * @param {Array<TodoItemModel>} todoList
+   * @param {Array<TodoItemModel>} todoList Todo list that will be rendered
    */
   render(todoList) {
     let template = this.TodoTemplate.renderView(todoList);
@@ -32,7 +36,9 @@ export class TodoView {
    */
 
   /**
-   * @method Bind to add a todo after click in add-todo button
+   * to add a todo after click in add-todo button
+   * 
+   * @method Bind 
    *
    * @param {bindAddTodoHandler} handler A callback function to set a new todo on service corresponding
    */
@@ -56,7 +62,9 @@ export class TodoView {
    */
 
   /**
-   * @method bindRemoveTodo Remove a todo from saved todo after click on delete button
+   * Remove a todo from saved todo after click on delete button
+   * 
+   * @method bindRemoveTodo 
    *
    * @param {bindRemoveTodoHandler} handler A function to remove a todo from service
    */
@@ -80,7 +88,9 @@ export class TodoView {
    */
 
   /**
-   * @method bindToggleTodo Toggle a saved todo to new title for it
+   * Toggle a saved todo to new title for it
+   * 
+   * @method bindToggleTodo 
    *
    * @param {bindToggleTodoHandler} handler A function to toggle a todo from service
    */

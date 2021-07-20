@@ -13,6 +13,8 @@ import { TodoService } from "../services/todo-service.js";
 import { TodoTemplate } from "../template/todo.template.js";
 
 /**
+ * Application constant
+ * 
  * @type {TodoController}
  */
 const app = new TodoController(new TodoService(), new TodoView(TodoTemplate));
